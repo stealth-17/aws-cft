@@ -1,10 +1,13 @@
-﻿namespace HelloWorldLambda
+﻿using Amazon.Lambda.Core;
+
+[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
+namespace HelloWorldLambda
 {
     class Program
     {
-        public static string Handle()
+        public string Handle(string input, ILambdaContext context)
         {
-            return "Hello, World!";
+            return input;
         }
     }
 }
